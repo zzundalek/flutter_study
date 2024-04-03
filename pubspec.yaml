@@ -102,4 +102,4 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
 scripts:
-  gen: dart run build_runner watch
+  gen: dart run build_runner watch --delete-conflicting-outputs
