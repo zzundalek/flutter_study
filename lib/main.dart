@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/providers/counter_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
@@ -38,9 +39,13 @@ class MyHomePage extends StatelessWidget {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '1',
-              style: Theme.of(context).textTheme.headlineMedium,
+            Consumer(
+              builder: (context, ref, child) {
+                return Text(
+                  ref.watch(counterProvider).count.toString(),
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
+              },
             ),
           ],
         ),
