@@ -5,17 +5,19 @@ import '../create_test_container.dart';
 
 void main() {
   test('Test init value', () {
-    final container = createTestContainer();
+    // Avoid automatic disposal. See https://riverpod.dev/docs/essentials/testing#mocking-providers for more info
+    final auth = createTestContainer().listen<bool>(authProvider, (_, __) {});
 
     expect(
-      container.read(authProvider),
+      auth.read(),
       equals(false),
     );
   });
 
   test('Test login/logout functions', () {
-    // Insert all state changes into this array
     final stateChanges = <bool>[];
+
+    // Insert all state changes into this stateChanges array
     final container = createTestContainer()
       ..listen<bool>(
         authProvider,
