@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/components/pages/list_page.dart';
 import 'package:flutter_study/notifiers/counter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
+  static const path = '/';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final counterNotifier = ref.read(counterProvider.notifier);
@@ -27,6 +31,10 @@ class HomePage extends ConsumerWidget {
                 );
               },
             ),
+            TextButton(
+              onPressed: () => context.go(ListPage.path),
+              child: const Text('Go to list page'),
+            )
           ],
         ),
       ),
