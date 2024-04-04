@@ -3,6 +3,8 @@ import 'package:flutter_study/notifiers/auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LoginPage extends ConsumerWidget {
+  const LoginPage({super.key});
+
   static const path = '/login';
 
   @override
@@ -20,7 +22,7 @@ class LoginPage extends ConsumerWidget {
             TextButton(
               onPressed: authNotifier.login,
               child: const Text('Login'),
-            )
+            ),
           ],
         ),
       ),

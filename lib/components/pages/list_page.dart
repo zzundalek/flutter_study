@@ -3,6 +3,8 @@ import 'package:flutter_study/components/pages/home_page.dart';
 import 'package:go_router/go_router.dart';
 
 class ListPage extends StatelessWidget {
+  const ListPage({super.key});
+
   static const path = '/list';
 
   @override
@@ -18,7 +20,7 @@ class ListPage extends StatelessWidget {
             TextButton(
               onPressed: () => context.go(HomePage.path),
               child: const Text('Go to homepage'),
-            )
+            ),
           ],
         ),
       ),

@@ -6,7 +6,7 @@ part of 'router.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'9a54ab4ab36fdfb111d67a2ee46b6905006e4442';
+String _$routerHash() => r'2cc4d6985c42956a137e75bba6148b34cb6ce15c';
 
 /// Router reacting on auth provider
 /// Inspired by https://github.com/lucavenir/go_router_riverpod/blob/master/example/lib/router/router.dart

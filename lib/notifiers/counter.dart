@@ -6,7 +6,7 @@ part 'counter.g.dart';
 @riverpod
 class Counter extends _$Counter {
   @override
-  model.Counter build() => model.Counter(count: 0);
+  model.Counter build() => const model.Counter(count: 0);
 
   void increment() => state = state.copyWith(count: state.count + 1);
 }

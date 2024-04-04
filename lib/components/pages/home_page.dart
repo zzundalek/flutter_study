@@ -6,6 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
+  const HomePage({super.key});
+
   static const path = '/';
 
   @override

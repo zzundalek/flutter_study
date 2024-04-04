@@ -20,15 +20,15 @@ GoRouter router(RouterRef ref) {
     routes: [
       GoRoute(
         path: HomePage.path,
-        builder: (context, state) => HomePage(),
+        builder: (context, state) => const HomePage(),
       ),
       GoRoute(
         path: ListPage.path,
-        builder: (context, state) => ListPage(),
+        builder: (context, state) => const ListPage(),
       ),
       GoRoute(
         path: LoginPage.path,
-        builder: (context, state) => LoginPage(),
+        builder: (context, state) => const LoginPage(),
       ),
     ],
   );
