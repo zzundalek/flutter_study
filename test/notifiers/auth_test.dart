@@ -13,23 +13,24 @@ void main() {
     );
   });
 
-  test('Test login/logout function', () {
-    final container = createTestContainer();
-    expect(
-      container.read(authProvider),
-      equals(false),
-    );
+  test('Test login/logout functions', () {
+    // Insert all state changes into this array
+    final stateChanges = <bool>[];
+    final container = createTestContainer()
+      ..listen<bool>(
+        authProvider,
+        (_, next) {
+          stateChanges.add(next);
+        },
+      );
 
     container.read(authProvider.notifier).login();
-    expect(
-      container.read(authProvider),
-      equals(true),
-    );
-
     container.read(authProvider.notifier).logout();
+    container.read(authProvider.notifier).login();
+
     expect(
-      container.read(authProvider),
-      equals(false),
+      stateChanges,
+      equals([true, false, true]),
     );
   });
 }
