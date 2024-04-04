@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/components/count.dart';
 import 'package:flutter_study/components/pages/list_page.dart';
 import 'package:flutter_study/notifiers/auth.dart';
 import 'package:flutter_study/notifiers/counter.dart';
@@ -24,17 +25,7 @@ class HomePage extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Consumer(
-              builder: (context, ref, child) {
-                return Text(
-                  ref.watch(counterProvider).count.toString(),
-                  style: Theme.of(context).textTheme.headlineMedium,
-                );
-              },
-            ),
+            const Count(),
             TextButton(
               onPressed: () => context.go(ListPage.path),
               child: const Text('Go to list page'),
