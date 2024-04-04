@@ -42,3 +42,9 @@ To debug Riverpod [Riverpod observer](./lib/utils/riverpod_observer.dart) is use
 See debug console for more info:
 
 ![Riverpod observer debug console](./readme_assets/riverpod_observer.png)
+
+## Testing
+
+To execute Flutter tests run: `flutter test` or use VS Code Testing function.
+
+![VS Code testing functions](./readme_assets/testing.png)
