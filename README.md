@@ -35,3 +35,10 @@ samples, guidance on mobile development, and a full API reference.
   ```shell
   rps gen
   ```
+
+## Riverpod
+
+To debug Riverpod [Riverpod observer](./lib/utils/riverpod_observer.dart) is used.
+See debug console for more info:
+
+![Riverpod observer debug console](./readme_assets/riverpod_observer.png)

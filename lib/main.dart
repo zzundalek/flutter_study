@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/router/router.dart';
+import 'package:flutter_study/utils/riverpod_observer.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    ProviderScope(
+      observers: [
+        RiverpodObserver(),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends ConsumerWidget {
