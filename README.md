@@ -17,5 +17,21 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Setup
 
-1. Install rps `dart pub global activate rps`
+1. Install [rps](#pubspec-scripts)
 1. To run code generator run: `rps gen`
+
+## Pubspec scripts
+
+> In order to run pubspec scripts first install [Run Pubspec Script](https://pub.dev/packages/rps) by running `dart pub global activate rps`
+
+- Run flutter analyzer
+  
+  ```shell
+  rps lint
+  ```
+
+- Run build_runner in watch mode (auto generate scripts for freezed, riverpod etc.)
+  
+  ```shell
+  rps gen
+  ```
