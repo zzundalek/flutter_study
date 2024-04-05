@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_study/components/pages/recipes_page.dart';
 import 'package:flutter_study/model/recipe.dart';
 import 'package:go_router/go_router.dart';
 
-class RecipeDetail extends StatefulWidget {
+class RecipeDetail extends HookWidget {
   const RecipeDetail({
     required this.recipe,
     super.key,
@@ -13,19 +14,12 @@ class RecipeDetail extends StatefulWidget {
   static const path = '/recipes/:id';
 
   @override
-  State<RecipeDetail> createState() {
-    return _RecipeDetailState();
-  }
-}
-
-class _RecipeDetailState extends State<RecipeDetail> {
-  int _sliderVal = 1;
-
-  @override
   Widget build(BuildContext context) {
+    final sliderVal = useState(1);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.recipe.label),
+        title: Text(recipe.label),
       ),
       body: SafeArea(
         child: Column(
@@ -34,17 +28,17 @@ class _RecipeDetailState extends State<RecipeDetail> {
               height: 300,
               width: double.infinity,
               child: Image(
-                image: AssetImage(widget.recipe.imageUrl),
+                image: AssetImage(recipe.imageUrl),
               ),
             ),
             const SizedBox(
               height: 4,
             ),
             Text(
-              widget.recipe.label,
+              recipe.label,
               style: const TextStyle(fontSize: 18),
             ),
-            Text('Slider value: $_sliderVal'),
+            Text('Slider value: ${sliderVal.value}'),
             TextButton(
               onPressed: () => context.go(RecipesPage.path),
               child: const Text('Go to recipes page'),
@@ -53,11 +47,9 @@ class _RecipeDetailState extends State<RecipeDetail> {
               min: 1,
               max: 10,
               divisions: 9,
-              label: '$_sliderVal servings',
-              value: _sliderVal.toDouble(),
-              onChanged: (newValue) {
-                setState(() => _sliderVal = newValue.round());
-              },
+              label: '${sliderVal.value} servings',
+              value: sliderVal.value.toDouble(),
+              onChanged: (newValue) => sliderVal.value = newValue.toInt(),
               activeColor: Colors.green,
               inactiveColor: Colors.black,
             ),

@@ -1,12 +1,11 @@
 class Recipe {
-  String label;
-  String imageUrl;
-  // TODO: Add servings and ingredients here
-
   Recipe(
     this.label,
     this.imageUrl,
   );
+
+  String label;
+  String imageUrl;
 
   static List<Recipe> samples = [
     Recipe(
@@ -35,5 +34,3 @@ class Recipe {
     ),
   ];
 }
-
-// TODO: Add Ingredient class here
