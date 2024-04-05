@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/count.dart';
 import 'package:flutter_study/components/pages/list_page.dart';
+import 'package:flutter_study/components/pages/recipes_page.dart';
 import 'package:flutter_study/notifiers/auth.dart';
 import 'package:flutter_study/notifiers/counter.dart';
 import 'package:go_router/go_router.dart';
@@ -29,6 +30,10 @@ class HomePage extends ConsumerWidget {
             TextButton(
               onPressed: () => context.go(ListPage.path),
               child: const Text('Go to list page'),
+            ),
+            TextButton(
+              onPressed: () => context.go(RecipesPage.path),
+              child: const Text('Go to recipes page'),
             ),
             TextButton(
               onPressed: authNotifier.logout,

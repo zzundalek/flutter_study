@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/components/pages/home_page.dart';
 import 'package:flutter_study/components/pages/list_page.dart';
 import 'package:flutter_study/components/pages/login_page.dart';
+import 'package:flutter_study/components/pages/recipe_detail_page.dart';
+import 'package:flutter_study/components/pages/recipes_page.dart';
+import 'package:flutter_study/model/recipe.dart';
 import 'package:flutter_study/notifiers/auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -29,6 +32,16 @@ GoRouter router(RouterRef ref) {
       GoRoute(
         path: LoginPage.path,
         builder: (context, state) => const LoginPage(),
+      ),
+      GoRoute(
+        path: RecipesPage.path,
+        builder: (context, state) => const RecipesPage(),
+      ),
+      GoRoute(
+        path: RecipeDetail.path,
+        builder: (context, state) => RecipeDetail(
+          recipe: Recipe.samples[int.parse(state.pathParameters['id'] ?? '0')],
+        ),
       ),
     ],
   );
