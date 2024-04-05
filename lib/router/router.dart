@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/pages/home_page.dart';
-import 'package:flutter_study/components/pages/list_page.dart';
+import 'package:flutter_study/components/pages/test_page.dart';
 import 'package:flutter_study/components/pages/login_page.dart';
 // import 'package:flutter_study/components/pages/recipe_detail_page.dart';
 import 'package:flutter_study/components/pages/recipe_detail_hooks_page.dart';
@@ -12,6 +12,77 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'router.g.dart';
 
+/// Defines typesafe routes using go_router and go_router_builder
+/// See [GoRouter documentation](https://pub.dev/documentation/go_router/latest/topics/Type-safe%20routes-topic.html)
+/// See [GoRouter builder documentation](https://pub.dev/documentation/go_router_builder/latest/)
+
+/// Home Route
+@TypedGoRoute<HomeRoute>(
+  path: '/',
+  routes: [
+    TypedGoRoute<RecipesRoute>(
+      path: 'recipes',
+      routes: [
+        TypedGoRoute<RecipeDetailRoute>(
+          path: ':id',
+        ),
+      ],
+    ),
+    TypedGoRoute<TestRoute>(
+      path: 'test',
+    ),
+  ],
+)
+@immutable
+class HomeRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const HomePage();
+  }
+}
+
+@immutable
+class RecipesRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const RecipesPage();
+  }
+}
+
+@immutable
+class RecipeDetailRoute extends GoRouteData {
+  const RecipeDetailRoute({required this.id});
+
+  final int id;
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return RecipeDetail(recipe: Recipe.samples[id]);
+  }
+}
+
+@immutable
+class TestRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const TestPage();
+  }
+}
+
+/// Login Route
+const loginPath = '/login';
+
+@TypedGoRoute<LoginRoute>(
+  path: loginPath,
+)
+@immutable
+class LoginRoute extends GoRouteData {
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const LoginPage();
+  }
+}
+
 /// Router reacting on auth provider
 /// Inspired by https://github.com/lucavenir/go_router_riverpod/blob/master/example/lib/router/router.dart
 @riverpod
@@ -20,31 +91,8 @@ GoRouter router(RouterRef ref) {
 
   final router = GoRouter(
     redirect: (BuildContext context, GoRouterState state) =>
-        auth ? null : LoginPage.path,
-    routes: [
-      GoRoute(
-        path: HomePage.path,
-        builder: (context, state) => const HomePage(),
-      ),
-      GoRoute(
-        path: ListPage.path,
-        builder: (context, state) => const ListPage(),
-      ),
-      GoRoute(
-        path: LoginPage.path,
-        builder: (context, state) => const LoginPage(),
-      ),
-      GoRoute(
-        path: RecipesPage.path,
-        builder: (context, state) => const RecipesPage(),
-      ),
-      GoRoute(
-        path: RecipeDetail.path,
-        builder: (context, state) => RecipeDetail(
-          recipe: Recipe.samples[int.parse(state.pathParameters['id'] ?? '0')],
-        ),
-      ),
-    ],
+        auth ? null : loginPath,
+    routes: $appRoutes,
   );
 
   // Dispose the GoRouter object when this provider is disposed

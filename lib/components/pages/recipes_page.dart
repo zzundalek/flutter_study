@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/pages/recipe_detail_hooks_page.dart';
 import 'package:flutter_study/model/recipe.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_study/router/router.dart';
 
 class RecipesPage extends StatelessWidget {
   const RecipesPage({super.key});
-
-  static const path = '/recipes';
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class RecipesPage extends StatelessWidget {
           itemCount: Recipe.samples.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-              onTap: () => context.go(RecipeDetail.getPath(index)),
+              onTap: () => RecipeDetailRoute(id: index).go(context),
               child: Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(

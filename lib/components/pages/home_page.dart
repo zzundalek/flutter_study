@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/count.dart';
-import 'package:flutter_study/components/pages/list_page.dart';
-import 'package:flutter_study/components/pages/recipes_page.dart';
 import 'package:flutter_study/notifiers/auth.dart';
 import 'package:flutter_study/notifiers/counter.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_study/router/router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
-
-  static const path = '/';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,11 +24,11 @@ class HomePage extends ConsumerWidget {
           children: <Widget>[
             const Count(),
             TextButton(
-              onPressed: () => context.go(ListPage.path),
-              child: const Text('Go to list page'),
+              onPressed: () => TestRoute().go(context),
+              child: const Text('Go to test page'),
             ),
             TextButton(
-              onPressed: () => context.go(RecipesPage.path),
+              onPressed: () => RecipesRoute().go(context),
               child: const Text('Go to recipes page'),
             ),
             TextButton(

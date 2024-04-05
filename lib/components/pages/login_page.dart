@@ -5,8 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class LoginPage extends ConsumerWidget {
   const LoginPage({super.key});
 
-  static const path = '/login';
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authNotifier = ref.read(authProvider.notifier);
