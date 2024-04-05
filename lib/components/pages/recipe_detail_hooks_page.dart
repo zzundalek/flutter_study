@@ -12,6 +12,7 @@ class RecipeDetail extends HookWidget {
   final Recipe recipe;
 
   static const path = '/recipes/:id';
+  static String getPath(int id) => '/recipes/$id';
 
   @override
   Widget build(BuildContext context) {

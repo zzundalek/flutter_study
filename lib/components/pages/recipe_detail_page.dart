@@ -11,6 +11,7 @@ class RecipeDetail extends StatefulWidget {
   final Recipe recipe;
 
   static const path = '/recipes/:id';
+  static String getPath(String id) => '/recipes/$id';
 
   @override
   State<RecipeDetail> createState() {
