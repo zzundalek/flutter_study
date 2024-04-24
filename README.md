@@ -48,3 +48,70 @@ See debug console for more info:
 To execute Flutter tests run: `flutter test` or use VS Code Testing function.
 
 ![VS Code testing functions](./readme_assets/testing.png)
+
+## Mason setup
+
+Get bricks:
+
+```bash
+mason get
+```
+
+Generate simple package from a brick:
+
+```bash
+mason make simple_package -o packages
+```
+
+## Mason usage
+
+```bash
+mason init
+```
+
+```bash
+mason new test_brick --desc "My awesome, new brick" 
+```
+
+in mason.yaml add
+
+```yaml
+  test_brick:
+    path: bricks/test_brick
+```
+
+```bash
+mason list
+```
+
+```bash
+mason make test_brick
+```
+
+in mason.yaml
+  test_brick:
+    path: bricks/test_brick
+
+### Built-in Lambdas
+
+[To format variables use Lambdas](https://pub.dev/packages/mason_cli#built-in-lambdas)
+
+### Global bricks
+
+#### Add
+
+```bash
+mason add -g --source git https://github.com/felangel/mason --path bricks/widget
+```
+
+#### Remove
+
+```bash
+mason remove widget
+```
+
+#### Get all bricks (generate mason-lock.json)
+
+```bash
+mason get
+```
